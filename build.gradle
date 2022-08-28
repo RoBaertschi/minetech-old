@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
+        // maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
     }
     dependencies {
@@ -9,22 +10,26 @@ buildscript {
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10'
         // OPTIONAL Gradle plugin for Kotlin Serialization
         classpath 'org.jetbrains.kotlin:kotlin-serialization:1.7.10'
+
+        // classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'kotlin'
 apply plugin: 'kotlinx-serialization'
+// apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 apply from: 'https://raw.githubusercontent.com/thedarkcolour/KotlinForForge/site/thedarkcolour/kotlinforforge/gradle/kff-3.7.1.gradle'
 
-version = '1.0.0'
-group = 'example.examplemod'
-archivesBaseName = 'examplemod'
+version = '0.1.0-1.19.2'
+group = 'robaertschi.minetech'
+archivesBaseName = 'minetech'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
     // Change to your preferred mappings
+    // mappings channel: 'parchment', version: '2022.08.21-1.19.2'
     mappings channel: 'official', version: '1.19.2'
     // Add your AccessTransformer
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -37,7 +42,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                minetech {
                     source sourceSets.main
                 }
             }
@@ -50,7 +55,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                minetech {
                     source sourceSets.main
                 }
             }
@@ -62,10 +67,10 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,LOADING,CORE'
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
+            args '--mod', 'minetech', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
 
             mods {
-                examplemod {
+                minetech {
                     source sourceSets.main
                 }
             }
@@ -78,7 +83,7 @@ sourceSets.main.resources { srcDirs 'src/generated/resources/' }
 
 dependencies {
     // Use the latest version of Minecraft Forge
-    minecraft 'net.minecraftforge:forge:1.19.2-43.0.2'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.3'
 }
 
 compileKotlin {
@@ -88,12 +93,12 @@ compileKotlin {
 jar {
     manifest {
         attributes([
-                'Specification-Title': "examplemod",
-                'Specification-Vendor': "examplemodsareus",
+                'Specification-Title': "minetech",
+                'Specification-Vendor': "minetech",
                 'Specification-Version': "1", // We are version 1 of ourselves
                 'Implementation-Title': project.name,
                 'Implementation-Version': project.version,
-                'Implementation-Vendor' :"examplemodsareus",
+                'Implementation-Vendor' :"minetech",
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

@@ -6,21 +6,21 @@ loaderVersion="[3,)" # Require at least 3.x
 license='LGPL'
 
 [[mods]]
-modId="examplemod"
+modId="minetech"
 version="${file.jarVersion}"
-displayName="ExampleMod"
-credits="The ExampleMod dev team"
-authors="ExampleModAuthor"
+displayName="Minetech"
+credits="The Minetech dev team"
+authors="RoBaertschi"
 description='''
-Example mod that uses Kotlin for Forge.
+A GregTech inspired Tech mod for modern Minecraft!
 '''
-[[dependencies.examplemod]]
+[[dependencies.minetech]]
     modId="forge"
     mandatory=true
     versionRange="[41,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.examplemod]]
+[[dependencies.minetech]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.19,1.20)"

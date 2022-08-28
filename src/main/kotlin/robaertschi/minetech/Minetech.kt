@@ -1,6 +1,6 @@
-package example.examplemod
+package robaertschi.minetech
 
-import example.examplemod.block.ModBlocks
+import robaertschi.minetech.block.ModBlocks
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
@@ -8,6 +8,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import robaertschi.minetech.item.ModItems
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.forge.runForDist
 
@@ -18,9 +19,9 @@ import thedarkcolour.kotlinforforge.forge.runForDist
  *
  * An example for blocks is in the `blocks` package of this mod.
  */
-@Mod(ExampleMod.ID)
-object ExampleMod {
-    const val ID = "examplemod"
+@Mod(Minetech.ID)
+object Minetech {
+    const val ID = "minetech"
 
     // the logger for our mod
     val LOGGER: Logger = LogManager.getLogger(ID)
@@ -31,13 +32,15 @@ object ExampleMod {
         // Register the KDeferredRegister to the mod-specific event bus
         ModBlocks.REGISTRY.register(MOD_BUS)
 
+        ModItems.REGISTRY.register(MOD_BUS)
+
         val obj = runForDist(
             clientTarget = {
-                MOD_BUS.addListener(::onClientSetup)
+                MOD_BUS.addListener(Minetech::onClientSetup)
                 Minecraft.getInstance()
             },
             serverTarget = {
-                MOD_BUS.addListener(::onServerSetup)
+                MOD_BUS.addListener(Minetech::onServerSetup)
                 "test"
             })
 
