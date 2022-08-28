@@ -12,16 +12,27 @@ import robaertschi.minetech.Minetech
 import robaertschi.minetech.item.ModItems
 import thedarkcolour.kotlinforforge.forge.registerObject
 
+/**
+ * @since 0.1.0
+ * This Object holds all Blocks of this Mod.
+ */
 @Suppress
 object ModBlocks {
+
     val REGISTRY: DeferredRegister<Block> = DeferredRegister.create(ForgeRegistries.BLOCKS, Minetech.ID)
 
-    // the returned ObjectHolderDelegate can be used as a property delegate
-    // this is automatically registered by the deferred registry at the correct times
+
     val EXAMPLE_BLOCK = registerBlock("example_block") {
         Block(BlockBehaviour.Properties.of(Material.METAL))
     }
 
+    /**
+     * @author RoBaertschi
+     * @since 0.1.0
+     * @param name The registration string.
+     * @param supplier The Supplier which provides the Block.
+     * @return The registered Block.
+     */
     private fun registerBlock(name: String, supplier: () -> Block): Block {
         val toReturn by REGISTRY.registerObject(name) {
             supplier.invoke()
@@ -30,7 +41,14 @@ object ModBlocks {
         return toReturn
     }
 
-    private fun registerBlockItem(name: String, block: Block): Item {
+    /**
+     * @author RoBaertschi
+     * @since 0.1.0
+     * @param name The registration string.
+     * @param block The block for which the BlockItem is registered.
+     * @return Returns the BlockItem.
+     */
+    fun registerBlockItem(name: String, block: Block): BlockItem {
         val item by ModItems.REGISTRY.registerObject(name) {
             BlockItem(block, Item.Properties().tab(CreativeModeTab.TAB_MISC))
         }

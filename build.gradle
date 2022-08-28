@@ -11,6 +11,7 @@ buildscript {
         // OPTIONAL Gradle plugin for Kotlin Serialization
         classpath 'org.jetbrains.kotlin:kotlin-serialization:1.7.10'
 
+        classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.7.10'
         // classpath 'org.parchmentmc:librarian:1.+'
     }
 }
@@ -20,6 +21,7 @@ apply plugin: 'kotlinx-serialization'
 // apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 apply from: 'https://raw.githubusercontent.com/thedarkcolour/KotlinForForge/site/thedarkcolour/kotlinforforge/gradle/kff-3.7.1.gradle'
+apply plugin: 'org.jetbrains.dokka'
 
 version = '0.1.0-1.19.2'
 group = 'robaertschi.minetech'
@@ -103,3 +105,4 @@ jar {
         ])
     }
 }
+

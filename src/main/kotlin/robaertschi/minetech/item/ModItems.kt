@@ -7,6 +7,10 @@ import net.minecraftforge.registries.ForgeRegistries
 import robaertschi.minetech.Minetech
 import thedarkcolour.kotlinforforge.forge.registerObject
 
+/**
+ * @since 0.1.0
+ * All Items of this mod.
+ */
 object ModItems {
 
     val REGISTRY: DeferredRegister<Item> = DeferredRegister.create(ForgeRegistries.ITEMS, Minetech.ID);
