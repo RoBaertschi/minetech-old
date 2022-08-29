@@ -16,7 +16,7 @@ import thedarkcolour.kotlinforforge.forge.registerObject
  * @since 0.1.0
  * This Object holds all Blocks of this Mod.
  */
-@Suppress
+@Suppress("MemberVisibilityCanBePrivate", "unused")
 object ModBlocks {
 
     val REGISTRY: DeferredRegister<Block> = DeferredRegister.create(ForgeRegistries.BLOCKS, Minetech.ID)
@@ -33,7 +33,7 @@ object ModBlocks {
      * @param supplier The Supplier which provides the Block.
      * @return The registered Block.
      */
-    private fun registerBlock(name: String, supplier: () -> Block): Block {
+    fun registerBlock(name: String, supplier: () -> Block): Block {
         val toReturn by REGISTRY.registerObject(name) {
             supplier.invoke()
         }
