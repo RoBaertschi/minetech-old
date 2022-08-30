@@ -37,6 +37,7 @@ object ModBlocks {
         val toReturn by REGISTRY.registerObject(name) {
             supplier.invoke()
         }
+
         registerBlockItem(name, toReturn)
         return toReturn
     }
